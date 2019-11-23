@@ -1,0 +1,32 @@
+toggle {
+    display: block;
+    background: #efefef;
+}
+toggle label { 
+    display: block;
+    pointer-events:none;
+}
+toggle .toggle-title {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+    background: #ccc;
+    padding: 0.5rem;
+    pointer-events: all;
+}
+toggle .toggle-flag {
+    display: none;
+}
+toggle .toggle-pane {
+    max-height: 0;
+    overflow: hidden;
+    transition: 0.5s;
+    padding: 0;
+}
+toggle .toggle-inner-pane {
+    padding: 0.5rem;
+}
+toggle .toggle-flag:checked + .toggle-pane {
+    max-height: 282px; /*This value is dynamic to your context*/
+}

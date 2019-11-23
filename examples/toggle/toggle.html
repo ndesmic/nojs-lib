@@ -3,11 +3,39 @@
 	<head>
 		<title>Toggle</title>
 		<link rel="manifest" href="/manifest.json">
-		<link rel="stylesheet" href="toggle.css"></link>
+		<link rel="stylesheet" href="../../css/global.css">
+		<link rel="stylesheet" href="toggle.css">
 		<meta charset="utf-8" />
 		<link rel="icon" href="/img/icon32x32.png" type="image/png" />
 	</head>
 	<body lang="en">
-		<h1>Toggle</h1>
+		<h1>No-JS Toggle</h1>
+		<p>
+			This works by using adjacentcy selectors and a checkbox <code>:checked</code> state.  Since the control is wrapped in a label, clicking it will toggle the checkbox.  Then adjacent toggle-pane will animate to its open state.  A well know issue with slide-down animation to auto is that is doesn't work because animation to <code>auto</code> will just toggle because <code>auto</code> is not an animatable value.  Also, naïvely using height would cause the text to reflow on every frame which is not what we want.  A typical hack is to set overflow hidden and animate the max-height.  This sort of works but again we can't animate to <code>auto</code>.  So we have to guess at the height.  The faster the animation, the less any extra or shortage will be noticed.  However, getting it exact is currently unsolvable in pure CSS, here we've just premeasured the div when open.  If we were to extend this control with JS we could measure its open state and animate it exactly.  Another issue is how to stop toggling when the pane is clicked.  We do this by setting the label with <code>pointer-events: none</code> to ignore clicks but then re-enable them on just the title bar.  This will prevent other clickable elements inside of the toggle, if you need to enable them you will have to manually set them with <code>pointer-events: all</code>.  Another way around this would be to unnest the elements from the label and instead use an <code>for</code> attribute on the label so the click is still associated with the checkbox but the pane is not tied to it.  The trade off is that this would mean consumers must provide a unique id.  A final issue is that if the pane itself has padding it will stil shown even at 0 height because it can't be smaller than the padding.  What we can do is add an inner-pane which can have padding because it's fully contained within the outer-pane and won't bleed out when the outer-pane is minimized.
+		</p>
+		<toggle>
+			<label>
+
+				<div class="toggle-title">
+					<!--Title Content -->
+					<h2>Toggle Title</h2>
+					<!--/Title Content -->
+				</div> 
+				<input type="checkbox" class="toggle-flag">
+				<div class="toggle-pane">
+					<div class="toggle-inner-pane">
+						<!--Title Content -->
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam iaculis consequat sem vitae volutpat. Suspendisse eget velit libero. Donec vestibulum diam eu lectus imperdiet, in vulputate nunc consequat. Nulla interdum mattis purus et fringilla. In commodo tempor nisl id egestas. Nulla facilisi. Integer eget arcu eget odio viverra suscipit. Pellentesque ut elementum velit, at mattis justo. Sed nec viverra ligula. Nullam imperdiet, tortor et sollicitudin blandit, lectus tortor condimentum ex, a sollicitudin nunc nisi eleifend erat.
+
+						Cras purus leo, suscipit sit amet placerat non, laoreet et ligula. Praesent volutpat est et purus facilisis, eget iaculis diam ultricies. Fusce nec efficitur mauris. Etiam eros ipsum, vulputate id velit id, mollis fermentum ex. Fusce ultrices, ligula in sollicitudin euismod, nulla risus ornare turpis, at sagittis mauris sapien eu urna. Vivamus nec vehicula tellus. Sed tincidunt magna arcu, at faucibus lorem hendrerit in. Quisque eget consequat ex. Sed imperdiet fringilla vehicula.
+						
+						Curabitur placerat, libero iaculis molestie lacinia, justo neque mollis mauris, at porttitor nulla nisl vitae urna. Donec pellentesque at leo id consectetur. Proin lacinia nec sem ac consectetur. Aliquam dapibus quis est a maximus. Pellentesque fermentum luctus mi at malesuada. Ut non neque mattis, dictum ante sed, rhoncus magna. Mauris porta venenatis metus, vitae convallis enim finibus non. Cras ipsum odio, pellentesque vel dapibus non, ultricies quis magna. Donec luctus posuere nulla, eu venenatis purus facilisis et. Cras vitae sodales orci. Donec in maximus tellus. Phasellus et urna et augue commodo molestie eget at sem. Cras lorem leo, gravida ut vehicula non, condimentum at mauris.
+						
+						Nulla efficitur ligula ligula. Donec sit amet sem sem. Pellentesque vel tortor nibh. Suspendisse ultrices, dolor at malesuada varius, enim erat placerat purus, ac volutpat erat nisi vel nibh. Vestibulum non leo lobortis, placerat augue id, convallis odio. Ut ut elementum est. Nullam sit amet nunc sem. Nunc in feugiat justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris semper, augue non malesuada ultrices, purus nunc maximus leo, non ultrices elit quam vel sapien.
+						<!--/Title Content -->
+					</div>
+				</div>
+			</label>
+		</toggle>
 	</body>
 </html>
