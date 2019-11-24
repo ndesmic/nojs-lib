@@ -1,5 +1,7 @@
 # No JS Lib
 
+https://somnid.github.com/nojs-lib/
+
 Collection of components that don't use JS.  HTML and CSS only.  
 
 `global.css` is used for a baseline style reset only, it is not required for functionality.
@@ -11,11 +13,3 @@ Javascript is taxing, it has to be downloaded, parsed and executed before elemen
 ## No JS doesn't mean never JS
 
 It's also not necessary that we are completely at the mercy of CSS.  We can always progressively enhance the elements with javascript after the fact to get functionality that was maybe not needed but makes the experience better.
-
-[X] toggle
-[X] tab
-[X] alert
-[] accordion
-[] drawer
-[] modal
-[] segmented button
