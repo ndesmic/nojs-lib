@@ -1,16 +1,28 @@
 <!doctype html>
-<html>
+<html lang="en">
 	<head>
-		<title>No JS Lib</title>
+		<title>NoJS Lib</title>
 		<link rel="manifest" href="/manifest.json">
-		<link rel="stylesheet" href="/css/index.css"></link>
+		<link rel="stylesheet" href="/css/global.css">
 		<meta charset="utf-8" />
 		<link rel="icon" href="/img/icon32x32.png" type="image/png" />
 	</head>
-	<body lang="en">
-		<h1>No JS Lib</h1>
-		<ul>
-			<li><a href="/examples/toggle.html">Toggle</a></li>
-		</ul>
+	<body>
+		<section>
+			<h1>NoJS Libs</h1>
+			<ul>
+				<li><a href="/examples/toggle/toggle.html">NoJS Toggle</a></li>
+				<li><a href="/examples/tab/tab.html">NoJS Tab</a></li>
+				<li><a href="/examples/alert/alert.html">NoJS Alert</a></li>
+			</ul>
+		</section>
+		<section>
+			<h1>Semantics</h1>
+			<p>All NoJS components use custom-element naming conventions <code>nojs-{componentName}</code>.  This is because they are designed to be ready to upgraded and extended into real custom elements! By convention, all nested items must be referred to by a class.  This is to prevent leaking styles down to other elements.  The style is `{componentName}-{subComponent}` so, for example, a <code>nojs-tab</code> panel would be class <code>tab-panel</code>.  Hidden checkboxes and radios are referred to as <code>{componentName}-flag</code> because they represent the 1-bit state of the component as least in my convention.</p>
+		</section>
+		<section>
+			<h1>Notes and Limitations</h1>
+			<p>Since we are utilizing custom element syntax and this is a prerender strategy, we need to be careful to not include rules like <code>*:not(:defined)</code> so the elements will appear correctly.  If this rule is desired then you'll need to make sure you override it per element.</p>
+		</section>
 	</body>
 </html>

@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<title>NoJS Alert</title>
+		<link rel="manifest" href="/manifest.json">
+		<link rel="stylesheet" href="../../css/global.css">
+		<link rel="stylesheet" href="alert.css">
+		<meta charset="utf-8" />
+		<link rel="icon" href="/img/icon32x32.png" type="image/png" />
+	</head>
+	<body lang="en">
+        <a href="../../index.html">Back</a>
+		<h1>NoJS Alert</h1>
+		<p>
+            This works by using adjactency selectors and a checkbox with <code>:checked</code>. The elements are wrapped in a label so that clicking inside causes the checkbox to be toggled.  However since we are only concerned with the close button (×), we disabled pointer-events on the rest of the label.  This could also be accomplished by moving the element out of the label and having the label itself be the close button.  This approach was not selected because it requires the user to supply additional identifiers.  Note that the close button is actually not a button, this is because a button would absorb the click event and not propogate it to the checkbox label, so instead we just use the raw SVG but give it an aria role so it still reads like a button.  When the user clicks the close button the event is propgated to the label which toggles the checkbox and hides the content.  Since the content is hidden and no longer clickable it is effectively removed for the user.  One downside to the CSS-only version is that it cannot easily be animated.  We could roll it up into a 0 height element or fade it out but depending on what's around it, it may still take up layout space which is undesirable.  Animation to <code>display:none</code> is not possible.  If we enhanced it with JS we could supply more fancy transitions.  We could also allow the alert to be completely removed from the DOM.
+		</p>
+		<nojs-alert>
+            <label class="alert-container">
+                <input type="checkbox" class="alert-flag">
+                <div class="alert-content">
+                    <!--put content here-->
+                    <div role="img" id="stop-icon">🛑</div>
+                    <div>
+                        <h1>You have encountered an error of great importance!</h1>
+
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lacus magna, maximus sit amet elementum ac, venenatis et nisi. Aenean cursus erat eu odio bibendum fringilla. Nulla nec faucibus ligula, egestas malesuada urna. Proin non efficitur arcu. Proin quis dapibus lectus. Vivamus elit eros, accumsan ac varius eu, pharetra nec magna. Aenean porttitor velit risus, ut mattis purus elementum gravida. Sed efficitur, orci eget eleifend molestie, arcu leo eleifend dui, et consectetur arcu felis non velit. Proin et lobortis orci. In ipsum justo, convallis eget mollis at, sagittis eu purus. Aliquam pellentesque sagittis risus, scelerisque scelerisque justo tristique et.</p>
+                    </div>
+                    <!--/put content here-->
+                </div>
+                <svg width="24" height="24" role="button" class="alert-close">
+                    <line x1="0" x2="24" y1="0" y2="24" stroke="black" stroke-width="5" />
+                    <line x1="24" x2="0" y1="0" y2="24" stroke="black" stroke-width="5" />
+                </svg>
+            </label>
+		</nojs-alert>
+	</body>
+</html>

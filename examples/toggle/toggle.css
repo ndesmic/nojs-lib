@@ -1,12 +1,12 @@
-toggle {
+nojs-toggle {
     display: block;
     background: #efefef;
 }
-toggle label { 
+nojs-toggle label { 
     display: block;
     pointer-events:none;
 }
-toggle .toggle-title {
+nojs-toggle .toggle-title {
     display: flex;
     align-items: center;
     user-select: none;
@@ -15,18 +15,18 @@ toggle .toggle-title {
     padding: 0.5rem;
     pointer-events: all;
 }
-toggle .toggle-flag {
+nojs-toggle .toggle-flag {
     display: none;
 }
-toggle .toggle-pane {
+nojs-toggle .toggle-pane {
     max-height: 0;
     overflow: hidden;
-    transition: 0.5s;
+    transition: 0.5s cubic-bezier(0, 1, 0.5, 1);
     padding: 0;
 }
-toggle .toggle-inner-pane {
+nojs-toggle .toggle-inner-pane {
     padding: 0.5rem;
 }
-toggle .toggle-flag:checked + .toggle-pane {
-    max-height: 282px; /*This value is dynamic to your context*/
+nojs-toggle .toggle-flag:checked + .toggle-pane {
+    max-height: 446px; /*This value is dynamic to your context, you'll need to measure it or guess for dyanmic content, it will impact the transition animation if you are off*/
 }

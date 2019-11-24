@@ -1,0 +1,35 @@
+nojs-alert {
+    display: block;
+}
+nojs-alert .alert-flag {
+    display: none;
+}
+nojs-alert .alert-container {
+    pointer-events: none;
+    position: relative;
+}
+nojs-alert .alert-content {
+    border: 1px solid black;
+    background: lightpink;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+nojs-alert .alert-flag:checked ~ .alert-close,
+nojs-alert .alert-flag:checked ~ .alert-content {
+    display: none;
+}
+nojs-alert .alert-close {
+    pointer-events: all;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 32px;
+    cursor: pointer;
+}
+
+#stop-icon {
+    font-size: 40px;
+    margin-right: 2rem;
+}

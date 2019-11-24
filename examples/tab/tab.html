@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+	<head>
+		<title>NoJS Tab</title>
+		<link rel="manifest" href="/manifest.json">
+		<link rel="stylesheet" href="../../css/global.css">
+		<link rel="stylesheet" href="tab.css">
+		<meta charset="utf-8" />
+		<link rel="icon" href="/img/icon32x32.png" type="image/png" />
+	</head>
+	<body lang="en">
+        <a href="../../index.html">Back</a>
+		<h1>NoJS Tab</h1>
+		<p>
+			This works by using adjactency selectors and radio buttons with <code>:checked</code>.  Each tab is wrapped in a label so that clicking on the tab button will toggle it (technically clicking the panel does as well but since it's already enabled it doesn't matter).  Since radios by definition can only have one toggled element in a group, only one tab can ever be selected.  The tab elements are wrapped up in labels which mean it's harder to position them the way we want with the tab strip up top and the single panel at the bottom.  We can overcome this with <code>display: contents</code> which will remove the element from participating in layout, so we can slot the elements into the grid defined on the <code>nojs-tab</code>.  The titles are helpful if the tab name overflows!
+		</p>
+		<nojs-tab>
+            <label class="tab-container">
+                <input type="radio" name="my-tab" class="tab-flag" checked>
+                <span class="tab-tab" title="Tab A">Tab A</span>
+                <div class="tab-panel">
+                    Hello From Tab A!
+                </div>
+            </label>
+            <label class="tab-container">
+                <input type="radio" name="my-tab" class="tab-flag">
+                <span class="tab-tab"  title="Tab B">Tab B</span>
+                <div class="tab-panel">
+                    Hello From Tab B!
+                </div>
+            </label>
+            <label class="tab-container">
+                <input type="radio" name="my-tab" class="tab-flag">
+                <span class="tab-tab"  title="Tab C">Tab C</span>
+                <div class="tab-panel">
+                    Hello From Tab C!
+                </div>
+            </label>
+            <label class="tab-container">
+                <input type="radio" name="my-tab" class="tab-flag">
+                <span class="tab-tab" title="Tab with a long name that doesn't fit">Tab with a long name that doesn't fit</span>
+                <div class="tab-panel">
+                    Hello From Tab with a long name that doesn't fit!
+                </div>
+            </label>
+		</nojs-tab>
+	</body>
+</html>

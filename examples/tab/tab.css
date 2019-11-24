@@ -1,0 +1,39 @@
+nojs-tab {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 6rem); /*Adjust to be the largest tab you wish to support*/
+    grid-template-rows: [tabs] 2rem [panels] auto;
+}
+nojs-tab .tab-container {
+    display: contents;
+}
+nojs-tab .tab-flag {
+    display: none;
+}
+nojs-tab .tab-panel {
+    display: none;
+    grid-row: panels;
+    grid-column: 1/-1;
+    padding: 0.5rem;
+}
+nojs-tab .tab-tab {
+    padding: 0.5rem;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    cursor: pointer;
+    user-select: none;
+    grid-row: tabs;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+nojs-tab .tab-container:first-of-type .tab-tab {
+    border-left: 1px solid black;
+}
+nojs-tab .tab-flag:checked ~ .tab-tab {
+    background: #ccc;
+}
+nojs-tab .tab-flag:checked ~ .tab-panel {
+    display: block;
+}

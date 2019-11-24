@@ -34,13 +34,9 @@
 	box-sizing: border-box;
 	position: relative;
 }
-*:not(:defined){
-	display: block;
-	visibility: hidden;
-}
 body,html {
 	margin : 0;
-	padding: 0;
+	padding: 0.5rem;
 	font-family: arial;
 	font-size: 100%;
 	background-color: var(--background);
@@ -51,6 +47,9 @@ label, button, textarea, input {
 }
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
+}
+p {
+	text-indent: 4ch;
 }
 button {
 	margin: 0;
