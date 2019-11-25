@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+	<head>
+		<title>NoJS Drawer</title>
+		<link rel="manifest" href="../../manifest.json">
+		<link rel="stylesheet" href="../../css/global.css">
+		<link rel="stylesheet" href="drawer.css">
+		<meta charset="utf-8" />
+		<link rel="icon" href="../../img/icon32x32.png" type="image/png" />
+	</head>
+	<body lang="en">
+		<a href="../../index.html">Back</a>
+		<h1>NoJS Drawer</h1>
+		<p>
+            This works by using adjactency selectors and a checkbox with <code>:checked</code>.  A label is wrapped around the content but since we don't want it to trigger when any part is clicked we need to add <code>pointer-events: none</code>.  We add <code>pointer-events: all</code> to the menu SVG.  The SVG is not wrapped in a button otherwise that would absorb the click event instead of forwarding it to the label and checking the checkbox, but we do need to give it <code>role="button"</code> for screen readers.  When the checkbox is triggered, the adjacent panel will slide out.  Note that we have to place the panel outside by default, if we were to place it one the screen and transform it out then the animation would trigger on page load.
+         </p>
+         <p>The overlay is a seperate fixed position div of 100% height and width.  We use rgba color instead of opacity because opacity will be animated on page load which we don't want.  Also, we need to animate it with the drawer so that it only take up the extra space and animates at the same speed to not leave a gap.  This is because clicks on the menu itself should not forward to the overlay or clicking the menu would close the drawer so we need to make sure that it's never under the drawer itself.  By default pointer events are off so the overlay will not toggle open, but when activated we turn them on so that clicking off the menu will close it properly.
+        </p>
+		<nojs-drawer>
+            <label class="drawer-outer-container">
+                <input type="checkbox" class="drawer-flag" />
+                <div class="drawer-overlay"></div>
+                <svg class="drawer-open" width="32" height="32" role="button">
+                    <line x1="4" x2="28" y1="8" y2="8" stroke="black" stroke-width="5" />
+                    <line x1="4" x2="28" y1="16" y2="16" stroke="black" stroke-width="5" />
+                    <line x1="4" x2="28" y1="24" y2="24" stroke="black" stroke-width="5" />
+                </svg>
+                <div class="drawer-container">
+                    <div class="drawer-content">
+                        <!--Content goes here-->
+                            <ul>
+                                <li>Apples</li>
+                                <li>Pears</li>
+                                <li>Oranges</li>
+                                <li>Bananas</li>
+                                <li>Strawberries</li>
+                                <li>Mango</li>
+                                <li>Blueberries</li>
+                                <li>Cantalope</li>
+                                <li>Watermelon</li>
+                                <li>Blackberries</li>
+                                <li>Cherries</li>
+                                <li>Pomagranite</li>
+                            </ul>
+                        <!--/Content-->
+                    </div>
+                </div>
+            </label>
+		</nojs-drawer>
+	</body>
+</html>
