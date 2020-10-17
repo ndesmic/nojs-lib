@@ -1,6 +1,6 @@
 # No JS Lib
 
-https://somnid.github.com/nojs-lib/
+https://ndesmic.github.com/nojs-lib/
 
 Collection of components that don't use JS.  HTML and CSS only.  
 
